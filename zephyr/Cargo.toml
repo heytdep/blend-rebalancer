@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-zephyr-sdk = { version = "0.2.4", path = "../../../rs-zephyr-sdk/zephyr-sdk" }
+zephyr-sdk = { version = "0.2.4", git="https://github.com/xycloo/rs-zephyr-toolkit", rev="5d26be0" }
 serde = { version = "1", features = ["derive"] }
 stellar-strkey = { version = "0.0.8" }
 serde_json = "1.0"

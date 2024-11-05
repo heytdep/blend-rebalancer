@@ -102,11 +102,10 @@ fn check_hfs(env: &EnvClient) {
     env.log().debug(format!("tracking {} positions.", tracked.len()), None);
 
     for pos in tracked {
-        env.log().debug(format!("new wrapper .",), None);
         let mut pool = BlendPoolWrapper::new(env, pos.pool, MOCKED);
-        env.log().debug(format!("getting hf .",), None);
         let user_hf = pool.get_user_hf(env, &pos.p_user);
-        env.log().debug(format!("got hf {} {}.", user_hf.current, pos.down_lim), None);
+
+        env.log().debug(format!("User current hf: {}. Range {}-{}.", user_hf.current, pos.down_lim, pos.up_lim), None);
         let mut message = None;
         
         if user_hf.current > pos.up_lim {
@@ -119,7 +118,6 @@ fn check_hfs(env: &EnvClient) {
                 message = Some(build_request_object(env, pool, pos.p_user, pos.up_asst, pos.up_amnt, 4));
             }
         } else if user_hf.current < pos.down_lim {
-            env.log().debug(format!("need to rebalance.",), None);
             // User HF is too low, need to increase collateral or repay liabilities.
             if pos.down_cons {
                 // User chose conservative strategy, repaying debt.
@@ -127,8 +125,6 @@ fn check_hfs(env: &EnvClient) {
             } else {
                 // User chose non conservative strategy, increasing collateral.
                 message = Some(build_request_object(env, pool, pos.p_user, pos.down_asst, pos.down_amnt, 2));
-
-                env.log().debug(format!("message is {:?}.", message), None);
             }
         }
         
