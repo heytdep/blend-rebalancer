@@ -1,0 +1,52 @@
+name = "blend-balancer"
+
+[[tables]]
+name = "userinst"
+
+[[tables.columns]]
+name = "pool"
+col_type = "BYTEA"
+
+[[tables.columns]]
+name = "p_user"
+col_type = "BYTEA"
+
+[[tables.columns]]
+name = "url"
+col_type = "BYTEA"
+
+[[tables.columns]]
+name = "secret"
+col_type = "BYTEA"
+
+[[tables.columns]]
+name = "up_lim"
+col_type = "BIGINT"
+
+[[tables.columns]]
+name = "up_asst"
+col_type = "BYTEA"
+
+[[tables.columns]]
+name = "up_amnt"
+col_type = "BIGINT"
+
+[[tables.columns]]
+name = "up_cons"
+col_type = "BYTEA"
+
+[[tables.columns]]
+name = "down_lim"
+col_type = "BIGINT"
+
+[[tables.columns]]
+name = "down_asst"
+col_type = "BYTEA"
+
+[[tables.columns]]
+name = "down_amnt"
+col_type = "BIGINT"
+
+[[tables.columns]]
+name = "down_cons"
+col_type = "BYTEA"
